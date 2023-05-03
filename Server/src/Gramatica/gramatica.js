@@ -158,6 +158,12 @@ break;
 case 97:
  this.$ = new Operations($$[$0-2],$$[$0], Operator.OR, _$[$0-2].first_line, _$[$0-2].first_column); console.log(this.$.execute());
 break;
+case 98:
+ this.$ = new Operations($$[$0-2],null, Operator.INCREMENTO, _$[$0-2].first_line, _$[$0-2].first_column); console.log(this.$.execute());
+break;
+case 99:
+ this.$ = new Operations($$[$0-2],null, Operator.DECREMENTO, _$[$0-2].first_line, _$[$0-2].first_column); console.log(this.$.execute());
+break;
 case 100:
  this.$ = new Operations($$[$0],null, Operator.NOT, _$[$0-1].first_line, _$[$0-1].first_column); console.log(this.$.execute());
 break;
@@ -168,7 +174,7 @@ case 102:
  this.$ = new Literal($$[$0], Type.ID, _$[$0].first_line, _$[$0].first_column); console.log(this.$.execute())
 break;
 case 107:
- this.$ = new Literal($$[$0], Type.STRING, _$[$0].first_line, _$[$0].first_column); 
+ this.$ = new Literal($$[$0], Type.STRING, _$[$0].first_line, _$[$0].first_column);console.log(this.$.execute()) 
 break;
 case 108:
  this.$ = new Literal($$[$0], Type.CHAR, _$[$0].first_line, _$[$0].first_column); console.log(this.$.execute()) 

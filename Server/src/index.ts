@@ -91,7 +91,10 @@ Si la figura es un corazon, te aseguro que tendrás un 100 :3
 `
 
 entrada = `
-    int a = !(5+5);
+    int a = "5^(2.5++)";
+    while(true) {
+        a = a + 1;
+    }
     
     
 `

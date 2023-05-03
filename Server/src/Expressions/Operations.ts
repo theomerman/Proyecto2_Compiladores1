@@ -17,7 +17,11 @@ export class Operations extends Expression{
 
     public execute(env: Enviroment): any{
         const nodoLeft = this.left.execute(env);
-        const nodoRight = this.right.execute(env);
+        let nodoRight = this.left.execute(env);
+        if(this.right != null){
+            nodoRight = this.right.execute(env);
+        }
+            
         if(this.type == Operator.SUMA){
             //------BLOQUE_INT----------
             
@@ -197,6 +201,22 @@ export class Operations extends Expression{
                 return {value: (nodoLeft.value * -1), type: Type.INT, line: this.line, column: this.column}
             if(nodoLeft.type == Type.DOUBLE)
                 return {value: (nodoLeft.value * -1), type: Type.DOUBLE, line: this.line, column: this.column}
+        }
+        if(this.type == Operator.INCREMENTO){
+            //------BLOQUE_INT----------
+
+            if(nodoLeft.type == Type.INT)
+                return {value: (nodoLeft.value + 1), type: Type.INT, line: this.line, column: this.column}
+            if(nodoLeft.type == Type.DOUBLE)
+                return {value: (nodoLeft.value + 1), type: Type.DOUBLE, line: this.line, column: this.column}
+        }
+        if(this.type == Operator.DECREMENTO){
+            //------BLOQUE_INT----------
+
+            if(nodoLeft.type == Type.INT)
+                return {value: (nodoLeft.value - 1), type: Type.INT, line: this.line, column: this.column}
+            if(nodoLeft.type == Type.DOUBLE)
+                return {value: (nodoLeft.value - 1), type: Type.DOUBLE, line: this.line, column: this.column}
         }
         if(this.type == Operator.COMPARACION){
             //------BLOQUE_INT----------

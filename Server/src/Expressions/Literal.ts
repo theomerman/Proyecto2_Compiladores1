@@ -11,7 +11,7 @@ export class Literal extends Expression{
         this.type = type;
     }
 
-    public execute(enviroment: Enviroment) {
+    public execute() {
         if(this.type == Type.INT)
             return { value: Number(this.value), type: Type.INT, line: this.line, column: this.column };
         

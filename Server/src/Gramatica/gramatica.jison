@@ -285,8 +285,8 @@ Exp
     | Exp MENORI Exp                                { $$ = new Operations($1,$3, Operator.MENORIGUAL, @1.first_line, @1.first_column); console.log($$.execute());}
     | Exp AND Exp                                   { $$ = new Operations($1,$3, Operator.AND, @1.first_line, @1.first_column); console.log($$.execute());}
     | Exp OR Exp                                    { $$ = new Operations($1,$3, Operator.OR, @1.first_line, @1.first_column); console.log($$.execute());}
-    | Exp MAS MAS                                   //{ $$ = new Operations($1,$3, Operator., @1.first_line, @1.first_column); console.log($$.execute());}
-    | Exp MENOS MENOS                               //{ $$=NuevaOperacion($1,nuevoSimbolo(parseFloat(1),"numero"),"-")}
+    | Exp MAS MAS                                   { $$ = new Operations($1,null, Operator.INCREMENTO, @1.first_line, @1.first_column); console.log($$.execute());}
+    | Exp MENOS MENOS                               { $$ = new Operations($1,null, Operator.DECREMENTO, @1.first_line, @1.first_column); console.log($$.execute());}
     | NOT Exp                                       { $$ = new Operations($2,null, Operator.NOT, @1.first_line, @1.first_column); console.log($$.execute());}
     | MENOS Exp %prec UMENOS                        { $$ = new Operations($2,null, Operator.UNARIO_MENOS, @1.first_line, @1.first_column); console.log($$.execute());}//{ $$=NuevaOperacionUnario($2,"umenos"); }
     | ID							                { $$ = new Literal($1, Type.ID, @1.first_line, @1.first_column); console.log($$.execute())}
@@ -294,7 +294,7 @@ Exp
     | ID PARIZQ L_EXP PARDER                        //{ $$=nuevoSimbolo({Id:$1,Params:$3},"funcion"); }
     | ID CORIZR Exp CORDER                          //{ $$=nuevoSimbolo({Id:$1,Params:$3},"vector")}
     | ID CORIZR CORIZR Exp CORDER CORDER            //{ $$=nuevoSimbolo({Id:$1,Params:$4},"lista")}
-    | Cadena                                        { $$ = new Literal($1, Type.STRING, @1.first_line, @1.first_column); }
+    | Cadena                                        { $$ = new Literal($1, Type.STRING, @1.first_line, @1.first_column);console.log($$.execute()) }
     | Char                                          { $$ = new Literal($1, Type.CHAR, @1.first_line, @1.first_column); console.log($$.execute()) }
     | NUMERO                                        { $$ = new Literal($1, Type.INT, @1.first_line, @1.first_column); console.log($$.execute()) }
     | DECIMAL                                       { $$ = new Literal($1, Type.DOUBLE, @1.first_line, @1.first_column); console.log($$.execute()) }
