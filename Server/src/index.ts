@@ -1,6 +1,6 @@
 const parse = require('./Gramatica/gramatica');
 
-const entrada = `
+let entrada = `
 //Este es el primer archivo de prueba
 /*En este archivo se verifica el funcionamiento correcto del
 ciclo while, asi como la sentencia if y else
@@ -88,5 +88,11 @@ Si la figura es un corazon, te aseguro que tendrás un 100 :3
 
 
 
+`
+
+entrada = `
+    int a = !(5+5);
+    
+    
 `
 parse.parse(entrada);
