@@ -1,9 +1,9 @@
 import { Method } from "../Instructions/Method";
 import { Symbol } from "./Symbol";
 export class Enviroment{
-    private tablaSimbolos: Map<string, Symbol>;
-    private tablaMetodos: Map<string, Method>;
-    private anterior: Enviroment | null;
+    public tablaSimbolos: Map<string, Symbol>;
+    public tablaMetodos: Map<string, Method>;
+    public anterior: Enviroment | null;
     constructor(anterior: Enviroment | null, actual: string){
         this.tablaSimbolos = new Map<string, Symbol>();
         this.tablaMetodos = new Map<string, Method>();

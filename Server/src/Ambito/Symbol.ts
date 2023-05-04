@@ -2,16 +2,16 @@ import { Type } from "../Enums/Type";
 
 export class Symbol{
     id : string;
-    valor : string;
-    tipo : Type;
-    linea : number;
-    columna : number;
+    value : any;
+    type : Type;
+    line : number;
+    column : number;
 
-    constructor(_id: string, _valor: string, _tipo: Type, _linea: number, _columna: number){
+    constructor(_id: string, _valor: any, _tipo: Type, _linea: number, _columna: number){
         this.id = _id;
-        this.valor = _valor;
-        this.tipo = _tipo;
-        this.linea = _linea;
-        this.columna = _columna;
+        this.value = _valor;
+        this.type = _tipo;
+        this.line = _linea;
+        this.column = _columna;
     }
 }
