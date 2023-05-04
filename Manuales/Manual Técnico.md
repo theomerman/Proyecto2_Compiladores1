@@ -229,22 +229,20 @@ export enum Operator{
     UNARIO_MENOS,
 }
 ```
-La función append() agrega un nodo a la lista a la cabeza de esta.
-
 ### Clase Method:
 
 La clase Method representa un método en un programa. Un método es una colección de instrucciones que pueden ser ejecutadas en conjunto, y se pueden llamar desde otras partes del programa. Además, un método puede tener parámetros que se utilizan como entrada al método.
 
-Atributos:
+### Atributos:
 
-id: identificador del método.
-lista_parametro: lista de parámetros del método.
-instrucciones: lista de instrucciones que conforman el cuerpo del método.
-linea: número de línea donde se encuentra definido el método.
-columna: número de columna donde se encuentra definido el método.
-Métodos:
+`id`: identificador del método.\
+`lista_parametro`: lista de parámetros del método.\
+`instrucciones`: lista de instrucciones que conforman el cuerpo del método.\
+`linea`: número de línea donde se encuentra definido el método.\
+`columna`: número de columna donde se encuentra definido el método.
+### Métodos:
 
-constructor(_id: string, _lista_parametro: [], _instrucciones: [], _linea: number, _columna: number): constructor de la clase Method. Recibe como parámetros el identificador del método, la lista de parámetros, la lista de instrucciones, el número de línea y el número de columna donde se encuentra definido el método.
+`constructor(_id: string, _lista_parametro: [], _instrucciones: [], _linea: number, _columna: number)`: constructor de la clase Method. Recibe como parámetros el identificador del método, la lista de parámetros, la lista de instrucciones, el número de línea y el número de columna donde se encuentra definido el método.
 
 ```typescript
 export class Method{
