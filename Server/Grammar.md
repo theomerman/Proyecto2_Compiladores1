@@ -122,7 +122,7 @@
         | <Exp> '++'
         | <Exp> '--'
         | '!' <Exp>
-        | '-' <Exp> %prec UMENOS
+        | '-' <Exp>  UMENOS
         | ID
         | ID '(' ')'
         | ID '(' <L_EXP> ')'
@@ -135,14 +135,14 @@
         | TRUE
         | FALSE
         | '(' <Exp> ')'
-        | '(' TIPO2 ')' <Exp> %prec FCAST
+        | '(' TIPO2 ')' <Exp>  FCAST
         | RtoString '(' <Exp> ')' %prec FCAST
-        | RtoLower '(' <Exp> ')' %prec FCAST
-        | RtoUpper '(' <Exp> ')' %prec FCAST
-        | Rtruncate '(' <Exp> ')' %prec FCAST
-        | Rround '(' <Exp> ')' %prec FCAST
-        | Rlength '(' <Exp> ')' %prec FCAST
-        | Rtypeof '(' <Exp> ')' %prec FCAST
+        | RtoLower '(' <Exp> ')'  FCAST
+        | RtoUpper '(' <Exp> ')'  FCAST
+        | Rtruncate '(' <Exp> ')'  FCAST
+        | Rround '(' <Exp> ')'  FCAST
+        | Rlength '(' <Exp> ')'  FCAST
+        | Rtypeof '(' <Exp> ')'  FCAST
         ;
 
 <L_EXP> ::= <L_EXP> ',' <Exp>
