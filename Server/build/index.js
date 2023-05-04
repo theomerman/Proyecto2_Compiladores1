@@ -1,9 +1,8 @@
-import { Console } from "console";
-import { Enviroment } from "./Ambito/Enviroment";
-import { Global } from "./Instructions/Global";
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const Enviroment_1 = require("./Ambito/Enviroment");
+const Global_1 = require("./Instructions/Global");
 const parse = require('./Gramatica/gramatica');
-
 let entrada = `
 //Este es el primer archivo de prueba
 /*En este archivo se verifica el funcionamiento correcto del
@@ -92,19 +91,15 @@ Si la figura es un corazon, te aseguro que tendrás un 100 :3
 
 
 
-`
-
+`;
 entrada = `
     int a = 5+8;
     int b = a;
     // int c;
     
     
-`
+`;
 let AST = parse.parse(entrada);
-
 console.log(AST);
-
-let global = new Global(AST,new Enviroment(null, "Global"));
-
+let global = new Global_1.Global(AST, new Enviroment_1.Enviroment(null, "Global"));
 // global.segundaPasada();

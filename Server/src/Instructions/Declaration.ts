@@ -4,7 +4,7 @@ import { Enviroment } from "../Ambito/Enviroment";
 import { Symbol } from "../Ambito/Symbol";
 import { Type } from "../Enums/Type";
 
-export class Assignment extends Instruction{
+export class Declaration extends Instruction{
 
     constructor(public type: Type, public id: string, public value: Expression, line: number, column: number){
         super(line, column);

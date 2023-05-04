@@ -1,0 +1,25 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Operator = void 0;
+var Operator;
+(function (Operator) {
+    Operator[Operator["SUMA"] = 0] = "SUMA";
+    Operator[Operator["RESTA"] = 1] = "RESTA";
+    Operator[Operator["MULTIPLICACION"] = 2] = "MULTIPLICACION";
+    Operator[Operator["DIVISION"] = 3] = "DIVISION";
+    Operator[Operator["POTENCIA"] = 4] = "POTENCIA";
+    Operator[Operator["MODULO"] = 5] = "MODULO";
+    Operator[Operator["TERNARIO"] = 6] = "TERNARIO";
+    Operator[Operator["MAYOR"] = 7] = "MAYOR";
+    Operator[Operator["MENOR"] = 8] = "MENOR";
+    Operator[Operator["MAYORIGUAL"] = 9] = "MAYORIGUAL";
+    Operator[Operator["MENORIGUAL"] = 10] = "MENORIGUAL";
+    Operator[Operator["COMPARACION"] = 11] = "COMPARACION";
+    Operator[Operator["DIFERENTE"] = 12] = "DIFERENTE";
+    Operator[Operator["OR"] = 13] = "OR";
+    Operator[Operator["AND"] = 14] = "AND";
+    Operator[Operator["NOT"] = 15] = "NOT";
+    Operator[Operator["INCREMENTO"] = 16] = "INCREMENTO";
+    Operator[Operator["DECREMENTO"] = 17] = "DECREMENTO";
+    Operator[Operator["UNARIO_MENOS"] = 18] = "UNARIO_MENOS";
+})(Operator = exports.Operator || (exports.Operator = {}));

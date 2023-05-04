@@ -3,6 +3,13 @@
     const { Type } = require('../Enums/Type');
     const { Operations } = require('../Expressions/Operations');
     const { Operator } = require('../Enums/Operator');
+    const { Declaration } = require('../Instructions/Declaration');
+    // var AST = [];
+    // let errores = [];
+
+    // export { AST, errores };
+    // module.exports.AST = AST;
+    // module.exports.errores = errores;
     
 %}
 /* Definición Léxica */
@@ -120,13 +127,13 @@
 %% /* Definición de la gramática */
 //console.log(JSON.stringify($1,null,2));
 INI
-    : LINS EOF  //{imprimibles = [];errores = [];EntornoGlobal = Entorno(null);EjecutarBloque($1, EntornoGlobal); return {Entorno:EntornoGlobal, Imprimibles:imprimibles,Errores:errores,Arbol:JSON.stringify($1,null,2)}}
-    | error EOF //{errores.push("Sintactico","Error en : '"+yytext+"'",this._$.first_line,this._$.first_column); console.log("Sintactico","Error en : '"+yytext+"'",this._$.first_line,this._$.first_column)}
+    : LINS EOF  { return $1 }//{imprimibles = [];errores = [];EntornoGlobal = Entorno(null);EjecutarBloque($1, EntornoGlobal); return {Entorno:EntornoGlobal, Imprimibles:imprimibles,Errores:errores,Arbol:JSON.stringify($1,null,2)}}
+    | error EOF {errores.push("Sintactico","Error en : '"+yytext+"'",this._$.first_line,this._$.first_column); console.log("Sintactico","Error en : '"+yytext+"'",this._$.first_line,this._$.first_column)}
 ;
 
 LINS 
-    : LINS INS   //{ $$=$1; $$.push($2) }
-    | INS        //{ $$=[]; $$.push($1) }
+    : LINS INS   { $$=$1; $$.push($2) }
+    | INS        { $$=[]; $$.push($1) }
 ;
 
 INS 
@@ -152,8 +159,8 @@ RETORNO
 ;
 
 DECLARAR
-    : TIPO ID                                                       //{$$ = Crear($2,$1,null,null,null)}
-    | TIPO ID IGUAL Exp                                             //{$$ = Crear($2,$1,null,null,$4)}
+    : TIPO ID                                                       //{$$ = new Declaration($1,$2,null,@1.first_line,@1.first_column)}
+    | TIPO ID IGUAL Exp                                             {$$ = new Declaration($1,$2,$4,@1.first_line,@1.first_column)}
     | TIPO CORIZR CORDER ID IGUAL Rnew TIPO CORIZR Exp CORDER       //{$$ = Crear($4,$1,$7,$9,null)} 
     | TIPO CORIZR CORDER ID IGUAL LLAVEIZQ L_EXP LLAVEDER           //{$$ = Crear($4,$1,$1,null,$7)}
     | Rlist MENOR TIPO MAYOR ID IGUAL Rnew Rlist MENOR TIPO MAYOR   //{$$ = Crear($5,$3,$10,null,null)}
@@ -173,7 +180,7 @@ PARAMETROS
 ;
 
 ASIGNAR
-    : ID IGUAL Exp                                      //{$$ = Asignar($1,$3,null)}
+    : ID IGUAL Exp                                      //{$$ = Assigment($1,$3,null)}
     | ID INCRE                                          //{$$ = Asignar($1,NuevaOperacion(nuevoSimbolo($1,"ID"),nuevoSimbolo(parseFloat(1),"numero"),$2),null)}
     | ID CORIZR Exp CORDER IGUAL Exp                    //{$$ = Asignar($1,$6,$3)}  
     | ID PUNTO Radd PARIZQ Exp PARDER                   //{$$ = Asignar($1,$5,nuevoSimbolo("","lista"))} 
